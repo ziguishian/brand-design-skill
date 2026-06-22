@@ -253,11 +253,13 @@ Entry condition: final logo image assets are approved.
 Agent action:
 
 1. Propose manual contents based on industry.
-2. Identify needed application visuals.
-3. Ask whether to generate application images.
-4. Stop for approval.
-5. Generate imagery only after confirmation when needed.
-6. Build the VI system text and assets around approved images.
+2. If the user requested a complete/full VI manual, use `full-vi-manual-outline.md` and present the required 21-chapter structure.
+3. Identify needed application visuals.
+4. Explain which chapters need generated imagery, which can be specification-only, and which are not applicable but still rendered.
+5. Ask whether to approve the structure and generate application images.
+6. Stop for approval.
+7. Generate imagery only after confirmation when needed.
+8. Build the VI system text and assets around approved images.
 
 Exit condition:
 
@@ -267,6 +269,7 @@ Forbidden:
 
 - Do not use generic applications.
 - Do not skip brand foundation, imagery, layout, applications, and asset delivery.
+- Do not omit chapters from a complete/full VI manual.
 - Do not introduce SVG requirements.
 - Do not render the HTML manual in the same response that first proposes the VI structure.
 
@@ -277,10 +280,13 @@ Entry condition: VI content, final logo images, and application assets are ready
 Agent action:
 
 1. Create HTML/CSS manual.
-2. Use approved image assets directly.
-3. Use generated images or clearly labeled placeholders.
-4. Verify responsive layout and asset paths.
-5. Summarize deliverables.
+2. For complete/full VI manuals, render all 21 chapters from `full-vi-manual-outline.md` in order.
+3. Render every numbered subsection as content, a rule, an example, a token, a prompt, an asset slot, or a "Not applicable / 不适用" note with reason.
+4. Include a linked table of contents and final coverage checklist.
+5. Use approved image assets directly.
+6. Use generated images or clearly labeled placeholders.
+7. Verify responsive layout, asset paths, and chapter coverage.
+8. Summarize deliverables.
 
 Exit condition:
 
@@ -290,6 +296,7 @@ Forbidden:
 
 - Do not ship broken links.
 - Do not hide missing images.
+- Do not hide missing chapters or irrelevant chapters.
 - Do not use decorative filler instead of real touchpoints.
 - Do not inline SVG logos.
 

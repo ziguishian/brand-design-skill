@@ -43,6 +43,7 @@ Before doing real work:
 - Read [references/conversational-workflow.md](references/conversational-workflow.md) for detailed stage behavior, templates, shortcuts, and failure recovery.
 - Read [references/industry-and-manual-scope.md](references/industry-and-manual-scope.md) before design direction and VI manual planning.
 - Read [references/design-output-standards.md](references/design-output-standards.md) before final logo image, VI, or HTML manual production.
+- Read [references/full-vi-manual-outline.md](references/full-vi-manual-outline.md) before proposing or rendering any complete/full VI brand manual.
 
 ## Ideal Flow
 
@@ -269,8 +270,10 @@ Entry: final logo image assets are approved.
 Agent action:
 
 - Propose VI manual level: Logo Pack, Core VI, Professional Brand Manual, or Production System.
+- If the user asks for "完整 VI", "全套 VI", "完整品牌手册", "complete VI", or a final deliverable suitable for open-ended brand use, choose Full VI Manual and use `full-vi-manual-outline.md`.
 - Choose industry-specific applications from `industry-and-manual-scope.md`.
 - Identify multiple additional application images needed, not a single catch-all board.
+- Present the required 21-chapter manual structure when Full VI Manual is selected, and state which chapters need generated images, which can be specification-only, and which are not applicable but still rendered.
 - Ask whether to generate those application images.
 - Stop for approval before generating application images or rendering the manual.
 - Build the VI system around approved logo images and approved/generated application imagery only after approval.
@@ -293,6 +296,9 @@ Entry: VI structure, final logo image assets, and visual assets are approved or 
 Agent action:
 
 - Create editable HTML/CSS manual.
+- If delivering a complete/full VI manual, render all 21 top-level chapters from `full-vi-manual-outline.md` in order, with every numbered subsection visible.
+- Do not omit a chapter because it seems irrelevant. Mark it "Not applicable / 不适用" with a reason, or "Pending asset generation" if approved imagery is missing.
+- Add a visible table of contents linking to all 21 chapters and a final coverage checklist showing chapter completion status.
 - Use approved image assets directly with valid paths.
 - Include a prominent logo system section before applications. It must explain inspiration sources, visual metaphor, form construction, positive/negative form logic, black/white usage, inverted usage, multi-color usage, small-size behavior, and misuse examples.
 - Use several generated application images or clearly labeled placeholders.

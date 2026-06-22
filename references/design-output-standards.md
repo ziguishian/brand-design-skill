@@ -36,6 +36,7 @@ Before moving stages, verify:
 - Actual generated logo images exist before final logo asset creation.
 - User approved or selected a generated direction before final logo asset creation.
 - User approved the final logo image assets before the full VI manual.
+- Complete/full VI manual requests use `full-vi-manual-outline.md` and render all 21 chapters.
 - HTML manual uses approved logo images and appropriate generated application visuals when available.
 
 If any item fails, stop and ask for the missing input.
@@ -91,10 +92,14 @@ Use this checklist before sending a response or producing an artifact.
 - Are there several application images or clearly separated application scenes instead of only one generic board?
 - Are voice/tone and asset delivery included when relevant?
 - Did I ask approval before rendering final HTML?
+- If the user requested a complete/full VI manual, did I present the 21-chapter structure before final rendering?
 
 ### HTML QA
 
 - Are paths valid?
+- If this is a complete/full VI manual, are all 21 chapters and every numbered subsection from `full-vi-manual-outline.md` visibly rendered?
+- Does the page include a table of contents linking to all 21 chapters?
+- Does the page include a final coverage checklist with complete / not applicable / pending asset statuses?
 - Are approved logo image assets linked and visible?
 - Can users copy color values and key design tokens with one click?
 - Are font specimens rendered visually in the page, not merely described?
@@ -119,6 +124,8 @@ Treat the output as a regression if any of these happen:
 - The agent treats its own recommendation as user approval.
 - The agent creates a full VI manual before final logo image approval.
 - The agent renders the final HTML manual in the same response that first proposes the VI/application plan.
+- The final HTML for a complete/full VI request omits any of the 21 required chapters.
+- The final HTML hides irrelevant sections instead of marking them "Not applicable / 不适用" with reasons.
 - The final manual contains generic applications unrelated to the industry.
 
 When a regression happens, mark the artifact as exploratory or regression, return to the correct stage, and ask for the missing user decision.
@@ -126,6 +133,8 @@ When a regression happens, mark the artifact as exploratory or regression, retur
 ## Professional Brand Manual Contents
 
 A complete VI manual should include these sections when relevant to the brand.
+
+For a complete/full VI manual request, `references/full-vi-manual-outline.md` is authoritative. Render all 21 top-level chapters and all numbered subsections. The shorter list below is a conceptual baseline only; it does not replace the required 21-chapter structure.
 
 ### 1. Brand Foundation
 
@@ -303,6 +312,9 @@ VI/application images:
 ## HTML Brand Manual Standards
 
 - Deliver a complete HTML file with embedded CSS unless the user's environment calls for a framework.
+- For complete/full VI requests, render the full 21-chapter structure from `full-vi-manual-outline.md`, including every numbered subsection as visible content.
+- Include a table of contents with links to all 21 chapters and a final coverage checklist.
+- Do not drop non-core sections such as digital product, motion, office collateral, marketing collateral, digital media, packaging, environment, merchandise, governance, or file delivery. If not relevant, mark them "Not applicable / 不适用" and explain why.
 - Use editorial sections with strong hierarchy and generous whitespace.
 - Match the aesthetic to the industry and price tier.
 - Show approved logo image assets directly.

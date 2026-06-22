@@ -1,4 +1,4 @@
 interface:
   display_name: "Brand Design Skill"
-  short_description: "Strict gated brand identity workflow with Socratic questions and approvals."
-  default_prompt: "Use $brand-design-skill as a strict gated workflow. First ask Socratic brand/logo questions, then wait for my answers or explicit assumption approval. Do not generate images, final logo assets, or a VI manual until I approve each stage."
+  short_description: "Strict gated brand identity workflow with complete 21-chapter VI manuals."
+  default_prompt: "Use $brand-design-skill as a strict gated workflow. First ask Socratic brand/logo questions, then wait for my answers or explicit assumption approval. Do not generate images, final logo assets, or a VI manual until I approve each stage. For complete VI manuals, render all required 21 chapters and their numbered subsections."
