@@ -35,6 +35,7 @@ Before moving stages, verify:
 - After image generation, the response gives explicit next-step options: choose, refine, combine, reject, or ask for recommendation.
 - Actual generated logo images exist before final logo asset creation.
 - User approved or selected a generated direction before final logo asset creation.
+- The selected candidate was recorded as the locked source of truth before final logo asset creation.
 - User approved the final logo image assets before the full VI manual.
 - Complete/full VI manual requests use `full-vi-manual-outline.md` and render all 21 chapters.
 - HTML manual uses approved logo images and appropriate generated application visuals when available.
@@ -72,17 +73,20 @@ Use this checklist before sending a response or producing an artifact.
 
 - Did the user actually approve a generated direction?
 - Did I document the selected source image?
+- Did I record the candidate label, file path/reference, visual description, locked invariants, allowed changes, and forbidden changes?
 - If I recommended a candidate, did I ask confirmation before final asset generation?
 
 ### Final Logo Image QA
 
-- Is the final logo image based on the selected generated direction?
+- Is the final logo image based on the locked selected source image, not a fresh text-only regeneration?
+- Does the final logo preserve the selected source image's silhouette, core geometry, negative space, proportions, stroke/weight relationships, angle/curve logic, and distinctive features?
 - Are primary, icon/social, and any needed alternate logo images saved in the workspace?
 - Does the logo system include inspiration/source logic, positive and negative form, black/white, inverted, and multi-color usage?
 - Does the logo system include a professional specification board with primary logo, dark/light background variants, black/white chips, App Icon variants, clear space, construction grid, geometry/radius callout, and application strip?
 - Is text legible and not garbled?
 - Does the image work at likely display sizes?
 - Are background variants provided when needed?
+- Did I compare final logo assets against the selected source image and reject any drift?
 - Did I ask the user to approve final logo images before VI manual?
 
 ### VI QA
@@ -122,6 +126,9 @@ Treat the output as a regression if any of these happen:
 - The agent generates images before asking required questions.
 - The agent generates images in the same response that first proposes design routes.
 - The agent creates final logo images before initial image exploration and user selection.
+- The agent creates final logo assets from a text-only prompt after the user selected a candidate.
+- The agent treats the selected candidate as a loose style direction instead of the locked source of truth.
+- The final logo changes the selected candidate's silhouette, core geometry, negative space, proportions, stroke/weight relationships, or angle/curve logic without explicit user approval.
 - The agent creates SVG logo files or SVG reconstructions.
 - The agent skips user selection after showing images.
 - The agent treats its own recommendation as user approval.
@@ -298,12 +305,15 @@ Logo exploration images:
 
 Final logo images:
 
-- Must be derived from a user-approved generated direction.
+- Must be derived from the locked user-approved source image, not merely inspired by it.
+- Must preserve the selected source image's silhouette, core geometry, negative space, proportions, stroke/weight relationships, angle/curve logic, and distinctive features unless the user explicitly approves a shape change.
+- Must use image editing or reference-image generation with the approved source image whenever available. Do not use a text-only prompt to recreate the logo after candidate selection.
 - Must be saved in the workspace, not only in the default generated image folder.
 - Should include practical variants when needed: primary, icon/social, dark-background, monochrome-style, positive/negative form, black/white, multi-color, and small-size.
 - Must include or be accompanied by a professional logo-system board following `professional-vi-visual-style.md`.
 - Must include a visible rationale for the logo's inspiration source and form logic in the final manual, not only a finished mark.
 - Must be checked for garbled text, unwanted watermarks, low contrast, broken cropping, excessive detail, and poor small-size readability.
+- Must be checked for identity drift against the selected source image.
 - Should use high-resolution PNG/WebP/JPG as appropriate; PNG is preferred for logos and manual embedding.
 - Must not be converted to SVG or traced into vector files.
 

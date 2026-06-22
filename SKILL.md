@@ -70,6 +70,7 @@ Before doing real work:
 - No approved design direction -> do not generate images.
 - No generated images -> do not create final logo assets.
 - No selected/approved generated image -> do not create final logo assets.
+- Selected candidate image is the locked logo source of truth -> do not redesign, reinterpret, normalize, or cosmetically improve the core mark without explicit user approval.
 - Do not create or reconstruct SVG logos at any stage.
 - No approved final logo image assets -> do not create full VI manual.
 - No VI/application plan approval -> do not render final HTML manual.
@@ -227,7 +228,7 @@ Entry: generated logo images exist.
 
 Agent action:
 
-- If user selects: document selected source image and prepare final logo image refinement plan.
+- If user selects: document selected source image, candidate label, file path, key visual traits, and locked invariants before preparing final logo image refinement plan.
 - If user refines: generate another image round.
 - If user combines: write a combined image prompt and generate again.
 - If user rejects: return to State 2.
@@ -242,6 +243,7 @@ Forbidden:
 - Treating a recommendation as approval.
 - Creating SVG.
 - Creating a new logo concept unrelated to the approved image.
+- Treating the selected candidate as a loose style direction instead of the locked source image.
 
 ### State 5: Final Logo Image Assets
 
@@ -250,9 +252,12 @@ Entry: one generated image direction is approved.
 Agent action:
 
 - Identify source image and candidate label.
-- Explain what will be preserved, simplified, and refined.
-- Use image generation/editing to create final raster logo assets, such as primary lockup, icon/social avatar, wordmark-style lockup, monochrome-style image, inverted-style image, positive/negative form demonstrations, multi-color application examples, and small-size image when relevant.
+- State the locked invariants: silhouette, core geometry, negative space, proportions, stroke/weight relationships, angle/curve logic, and any distinctive imperfections the user selected.
+- Explain that finalization may only clean export quality, crop, background, contrast, scale, lockup placement, and usage variants unless the user explicitly approves shape changes.
+- Use image editing or reference-image generation with the approved source image as input whenever available; do not create a fresh logo from a text-only prompt.
+- Create final raster logo assets, such as primary lockup, icon/social avatar, wordmark-style lockup, monochrome-style image, inverted-style image, positive/negative form demonstrations, multi-color application examples, and small-size image when relevant.
 - Create a professional logo-system board following `professional-vi-visual-style.md`: primary logo, dark/light background, black/white, App Icon, clear space, grid construction, geometry/radius callout, and application strip.
+- Compare final assets against the approved source image and reject/regenerate if the core mark drifts.
 - Save final logo images in the workspace.
 - Ask for final logo image approval or refinements.
 
@@ -263,6 +268,8 @@ Exit condition:
 Forbidden:
 
 - SVG output, SVG reconstruction, auto-tracing, embedded base64 vector wrappers, or code-drawn logo substitutes.
+- Re-generating the logo from a text prompt alone after the user has selected a candidate.
+- Changing the approved mark's silhouette, negative space, proportions, stroke relationships, angle logic, or core geometry unless the user explicitly asks for that change.
 - Full VI manual before final logo image approval.
 
 ### State 6: VI System Expansion

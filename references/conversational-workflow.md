@@ -198,13 +198,24 @@ Please choose one:
 
 Entry condition: generated logo images exist.
 
+When the user selects a candidate, treat that candidate image as the locked source of truth, not a loose style direction.
+
 User intents:
 
-- Select: document selection and move toward final logo image refinement.
+- Select: document selection, create a source lock record, and move toward final logo image refinement.
 - Refine: run another image generation round.
 - Combine: create a new image prompt combining selected features, then generate again.
 - Reject: return to Stage 2 and revise strategy.
 - Ask recommendation: recommend, explain, then ask for confirmation before final asset generation.
+
+Source lock record must include:
+
+- selected candidate label, such as B
+- source file path or generated image reference
+- short visual description
+- locked invariants: silhouette, core geometry, negative space, proportions, stroke/weight relationships, angles/curves, and key distinctive features
+- allowed changes: crop, background, resolution, contrast, clear-space framing, lockup placement, and application context
+- forbidden changes: new concept, changed outline, changed negative space, changed relative proportions, changed angle/curve logic, decorative additions, or unapproved typography changes
 
 Exit condition:
 
@@ -214,6 +225,7 @@ Forbidden:
 
 - Do not treat a recommendation as approval.
 - Do not invent a new logo concept unrelated to the generated/approved candidate.
+- Do not treat the approved candidate as only a moodboard or style direction.
 - Do not create SVG.
 
 ## Stage 5: Final Logo Image Assets
@@ -223,11 +235,13 @@ Entry condition: one generated image direction is approved.
 Agent action:
 
 1. Identify the approved source image and candidate label.
-2. Explain what will be preserved and simplified.
-3. Generate or edit final raster logo assets.
-4. Create a professional logo-system board using `professional-vi-visual-style.md`.
-5. Provide usage notes for image placement, clear space, minimum size, background control, grid, geometry, and app icon variants.
-6. Ask for final logo image approval.
+2. Restate the source lock record and locked invariants.
+3. Use image editing or reference-image generation with the approved source image as input whenever available.
+4. Generate or edit final raster logo assets without changing the core mark.
+5. Create a professional logo-system board using `professional-vi-visual-style.md` without altering the approved mark.
+6. Compare final assets against the selected source image.
+7. Provide usage notes for image placement, clear space, minimum size, background control, grid, geometry, and app icon variants.
+8. Ask for final logo image approval.
 
 Final image asset set:
 
@@ -246,6 +260,9 @@ Exit condition:
 Forbidden:
 
 - Do not create SVG, vector reconstructions, auto-traced files, or code-drawn substitutes.
+- Do not regenerate the selected logo from a text-only prompt.
+- Do not modify the core silhouette, negative space, proportions, stroke relationships, angle/curve logic, or distinctive features unless the user explicitly requested that change.
+- Do not let grid, geometry, app icon, or specification-board requirements reshape the approved logo. These panels explain and apply the mark; they do not redesign it.
 - Do not start full VI manual until final logo images are approved.
 
 ## Stage 6: VI System Expansion
@@ -337,3 +354,5 @@ If the agent accidentally skips a gate:
 4. Ask for the missing user decision.
 
 If the agent creates an SVG logo, treat it as a regression artifact, do not use it as the final identity source, and return to the image-based stage.
+
+If the final logo assets drift from the selected candidate, treat them as regression artifacts. Return to Stage 5, restate the source lock record, and regenerate or edit the assets with stricter source preservation before asking for approval again.

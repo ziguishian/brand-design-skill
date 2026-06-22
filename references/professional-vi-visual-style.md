@@ -35,6 +35,16 @@ For final logo image assets or a complete VI manual, create or render a prominen
 
 If generated image assets cannot cover every panel, render the missing panels in HTML/CSS as specification diagrams while keeping the logo itself image-based.
 
+## Source Preservation Rule
+
+The professional VI board must explain the approved logo; it must not redesign it.
+
+- Use the user-selected candidate image as the source of truth.
+- Keep the mark's silhouette, negative space, proportions, stroke/weight relationships, angle/curve logic, and distinctive features unchanged.
+- Grid, geometry, clear-space, app icon, and background panels should be drawn around or behind the approved image.
+- Do not "improve" the mark to fit a cleaner grid unless the user explicitly approves a shape change.
+- Do not recreate the logo from a text-only prompt for the board. Use the approved image asset directly or an image edit/reference workflow that preserves it.
+
 ## Board Composition
 
 Use a structured board layout:
@@ -72,6 +82,7 @@ Composition/framing: wide board with large primary logo on the left/center, dark
 Color palette: white/off-white, black, cool gray, restrained brand accent only.
 Text: keep labels short and readable; use bilingual headings such as "Logo System 标志系统", "Clear Space 安全空间", "Grid 标准制图", "Geometry 几何规范", "Application 应用系统".
 Constraints: logo must remain image-based; clean alignment; no fake paragraphs; no clutter; no 3D mascot; no decorative gradients; no random UI.
+Source preservation: use the approved logo image as the source of truth; preserve its silhouette, negative space, proportions, stroke/weight relationships, and angle/curve logic exactly; create specification panels around the mark, not a redesigned mark.
 Avoid: generic moodboard, advertising poster, excessive color, warped mockups, illegible tiny text, fake brand manual filler.
 ```
 
@@ -84,4 +95,4 @@ Treat output as below standard if:
 - applications dominate before the identity rules are explained
 - the page looks like a marketing landing page rather than a usable VI standard
 - labels are decorative instead of specifying how to use assets
-
+- the board changes the approved mark while trying to make the grid or geometry cleaner
