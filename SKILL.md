@@ -44,6 +44,7 @@ Before doing real work:
 - Read [references/industry-and-manual-scope.md](references/industry-and-manual-scope.md) before design direction and VI manual planning.
 - Read [references/design-output-standards.md](references/design-output-standards.md) before final logo image, VI, or HTML manual production.
 - Read [references/full-vi-manual-outline.md](references/full-vi-manual-outline.md) before proposing or rendering any complete/full VI brand manual.
+- Read [references/professional-vi-visual-style.md](references/professional-vi-visual-style.md) before final logo image asset generation, logo-system boards, application boards, or HTML manual visual design.
 
 ## Ideal Flow
 
@@ -251,6 +252,7 @@ Agent action:
 - Identify source image and candidate label.
 - Explain what will be preserved, simplified, and refined.
 - Use image generation/editing to create final raster logo assets, such as primary lockup, icon/social avatar, wordmark-style lockup, monochrome-style image, inverted-style image, positive/negative form demonstrations, multi-color application examples, and small-size image when relevant.
+- Create a professional logo-system board following `professional-vi-visual-style.md`: primary logo, dark/light background, black/white, App Icon, clear space, grid construction, geometry/radius callout, and application strip.
 - Save final logo images in the workspace.
 - Ask for final logo image approval or refinements.
 
@@ -301,6 +303,7 @@ Agent action:
 - Add a visible table of contents linking to all 21 chapters and a final coverage checklist showing chapter completion status.
 - Use approved image assets directly with valid paths.
 - Include a prominent logo system section before applications. It must explain inspiration sources, visual metaphor, form construction, positive/negative form logic, black/white usage, inverted usage, multi-color usage, small-size behavior, and misuse examples.
+- Render the logo system with a professional VI specification-board aesthetic: large primary logo, divided rule panels, x-based clear space, construction grid, geometry callouts, dark/light background variants, App Icon variants, and a bottom strip of real applications.
 - Use several generated application images or clearly labeled placeholders.
 - Render actual type specimens in the page instead of only listing font names and sizes.
 - Add one-click copy controls for color values and design tokens.

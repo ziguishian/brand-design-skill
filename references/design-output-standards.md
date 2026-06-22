@@ -79,6 +79,7 @@ Use this checklist before sending a response or producing an artifact.
 - Is the final logo image based on the selected generated direction?
 - Are primary, icon/social, and any needed alternate logo images saved in the workspace?
 - Does the logo system include inspiration/source logic, positive and negative form, black/white, inverted, and multi-color usage?
+- Does the logo system include a professional specification board with primary logo, dark/light background variants, black/white chips, App Icon variants, clear space, construction grid, geometry/radius callout, and application strip?
 - Is text legible and not garbled?
 - Does the image work at likely display sizes?
 - Are background variants provided when needed?
@@ -101,6 +102,8 @@ Use this checklist before sending a response or producing an artifact.
 - Does the page include a table of contents linking to all 21 chapters?
 - Does the page include a final coverage checklist with complete / not applicable / pending asset statuses?
 - Are approved logo image assets linked and visible?
+- Does the logo section look like a professional VI specification board rather than a decorative gallery?
+- Are clear-space, grid, geometry, dark/light background, App Icon, black/white, and application panels visible near the start of the manual?
 - Can users copy color values and key design tokens with one click?
 - Are font specimens rendered visually in the page, not merely described?
 - Are images reused intelligently through crops, repeated frames, CSS background positioning, or atlas/sprite-like sections?
@@ -126,6 +129,7 @@ Treat the output as a regression if any of these happen:
 - The agent renders the final HTML manual in the same response that first proposes the VI/application plan.
 - The final HTML for a complete/full VI request omits any of the 21 required chapters.
 - The final HTML hides irrelevant sections instead of marking them "Not applicable / 不适用" with reasons.
+- The final logo section lacks professional usage panels such as clear space, grid, geometry, background variants, and app icon variants.
 - The final manual contains generic applications unrelated to the industry.
 
 When a regression happens, mark the artifact as exploratory or regression, return to the correct stage, and ask for the missing user decision.
@@ -175,6 +179,7 @@ For a complete/full VI manual request, `references/full-vi-manual-outline.md` is
 - Inverted/dark-background image version
 - Small-size image version
 - App/social avatar crop
+- Professional VI specification board with clear-space, grid, geometry, black/white, dark/light background, app icon, and application panels
 
 ### 4. Logo Usage
 
@@ -296,6 +301,7 @@ Final logo images:
 - Must be derived from a user-approved generated direction.
 - Must be saved in the workspace, not only in the default generated image folder.
 - Should include practical variants when needed: primary, icon/social, dark-background, monochrome-style, positive/negative form, black/white, multi-color, and small-size.
+- Must include or be accompanied by a professional logo-system board following `professional-vi-visual-style.md`.
 - Must include a visible rationale for the logo's inspiration source and form logic in the final manual, not only a finished mark.
 - Must be checked for garbled text, unwanted watermarks, low contrast, broken cropping, excessive detail, and poor small-size readability.
 - Should use high-resolution PNG/WebP/JPG as appropriate; PNG is preferred for logos and manual embedding.
@@ -316,9 +322,11 @@ VI/application images:
 - Include a table of contents with links to all 21 chapters and a final coverage checklist.
 - Do not drop non-core sections such as digital product, motion, office collateral, marketing collateral, digital media, packaging, environment, merchandise, governance, or file delivery. If not relevant, mark them "Not applicable / 不适用" and explain why.
 - Use editorial sections with strong hierarchy and generous whitespace.
+- Use the professional VI visual language from `professional-vi-visual-style.md`: monochrome-first specification boards, thin dividers, calm grids, bilingual labels, precise measurement diagrams, and restrained application strips.
 - Match the aesthetic to the industry and price tier.
 - Show approved logo image assets directly.
 - Make the logo the primary visual subject in the manual, not just one asset among applications. Include inspiration/source, construction logic, positive/negative form, black/white, inverted, multi-color, clear space, small-size behavior, and misuse guidance.
+- The early logo section should include a complete board-style layout: large logo field, dark/light usage, clear space, grid, geometry/radius, black/white, App Icon, and practical applications.
 - Use multiple generated application images when available; otherwise include clearly labeled placeholders and prompts only if image generation was unavailable.
 - Include one-click copy controls for color values and practical tokens. The control must give visible feedback after copying.
 - Render font specimens directly in the page with sample headlines, body copy, numerals, labels, and packaging/legal microcopy. Do not only list font names or sizes.

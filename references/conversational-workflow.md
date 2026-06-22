@@ -225,8 +225,9 @@ Agent action:
 1. Identify the approved source image and candidate label.
 2. Explain what will be preserved and simplified.
 3. Generate or edit final raster logo assets.
-4. Provide usage notes for image placement, clear space, minimum size, and background control.
-5. Ask for final logo image approval.
+4. Create a professional logo-system board using `professional-vi-visual-style.md`.
+5. Provide usage notes for image placement, clear space, minimum size, background control, grid, geometry, and app icon variants.
+6. Ask for final logo image approval.
 
 Final image asset set:
 
@@ -236,6 +237,7 @@ Final image asset set:
 - monochrome-style image when useful
 - inverted/dark-background image when useful
 - small-size image when relevant
+- professional logo-system board with primary logo, dark/light background, black/white chips, app icon variants, clear-space diagram, grid construction, geometry/radius callout, and application strip
 
 Exit condition:
 
@@ -283,10 +285,11 @@ Agent action:
 2. For complete/full VI manuals, render all 21 chapters from `full-vi-manual-outline.md` in order.
 3. Render every numbered subsection as content, a rule, an example, a token, a prompt, an asset slot, or a "Not applicable / 不适用" note with reason.
 4. Include a linked table of contents and final coverage checklist.
-5. Use approved image assets directly.
-6. Use generated images or clearly labeled placeholders.
-7. Verify responsive layout, asset paths, and chapter coverage.
-8. Summarize deliverables.
+5. Render the logo system as a professional VI specification board using `professional-vi-visual-style.md`.
+6. Use approved image assets directly.
+7. Use generated images or clearly labeled placeholders.
+8. Verify responsive layout, asset paths, chapter coverage, and logo specification-board completeness.
+9. Summarize deliverables.
 
 Exit condition:
 
