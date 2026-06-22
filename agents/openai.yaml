@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brand Design Skill"
+  short_description: "Conversational image-first and image-final VI design workflow."
+  default_prompt: "Use $brand-design-skill to guide me conversationally: ask Socratic logo questions, generate logo images first, wait for my approval, then create final logo image assets and a complete HTML VI manual."

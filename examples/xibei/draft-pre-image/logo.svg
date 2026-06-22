@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" role="img" aria-labelledby="title desc">
+  <title id="title">朔禾 SHUOHE logo</title>
+  <desc id="desc">A minimal Northwest food brand logo with a circular bowl, horizon line, and three grain stems.</desc>
+  <rect width="960" height="320" fill="#F6EFE2"/>
+  <g transform="translate(72 56)">
+    <circle cx="104" cy="104" r="92" fill="none" stroke="#16120F" stroke-width="12"/>
+    <path d="M44 124c32 24 88 24 120 0" fill="none" stroke="#16120F" stroke-width="12" stroke-linecap="round"/>
+    <g fill="none" stroke="#16120F" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M76 118V64"/>
+      <path d="M104 118V48"/>
+      <path d="M132 118V64"/>
+      <path d="M76 72l-18-16"/>
+      <path d="M76 84l-20 6"/>
+      <path d="M104 58l-18-18"/>
+      <path d="M104 72l20-18"/>
+      <path d="M132 72l18-16"/>
+      <path d="M132 84l20 6"/>
+    </g>
+    <circle cx="104" cy="196" r="8" fill="#D89A2B"/>
+  </g>
+  <g fill="#16120F">
+    <text x="296" y="148" font-family="Noto Serif SC, Source Han Serif SC, SimSun, serif" font-size="84" font-weight="700" letter-spacing="8">朔禾</text>
+    <text x="302" y="202" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="10">SHUOHE</text>
+  </g>
+  <path d="M296 232h320" stroke="#D89A2B" stroke-width="8" stroke-linecap="round"/>
+</svg>
+

@@ -1,0 +1,887 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>海涛 HAITAO 品牌视觉识别手册</title>
+    <style>
+      :root {
+        --ocean: #0d2c4d;
+        --teal: #1fa3a6;
+        --water: #d6e6ee;
+        --ink: #2b2f33;
+        --steel: #bfc5cc;
+        --paper: #fbfaf6;
+        --white: #ffffff;
+        --line: #d9dde0;
+        --muted: #68727d;
+        --shadow: 0 18px 60px rgba(13, 44, 77, .12);
+      }
+
+      * { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          linear-gradient(180deg, rgba(214,230,238,.45), rgba(251,250,246,0) 420px),
+          var(--paper);
+        font-family: "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", Arial, sans-serif;
+        line-height: 1.65;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .page {
+        width: min(1200px, calc(100vw - 40px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(18px);
+        background: rgba(251, 250, 246, .82);
+        border-bottom: 1px solid rgba(217, 221, 224, .8);
+      }
+
+      .topbar-inner {
+        width: min(1200px, calc(100vw - 40px));
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        min-height: 68px;
+      }
+
+      .brand-pill {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--ocean);
+        font-weight: 800;
+        letter-spacing: .1em;
+      }
+
+      .mini-mark {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background-image: url("applications/haitao-application-atlas.png");
+        background-size: 200% 200%;
+        background-position: 0 0;
+        box-shadow: inset 0 0 0 1px rgba(13,44,77,.08);
+      }
+
+      nav {
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      nav a {
+        flex: 0 0 auto;
+        padding: 8px 11px;
+        color: var(--muted);
+        text-decoration: none;
+        border-radius: 999px;
+        font-size: 13px;
+        transition: color .2s ease, background .2s ease;
+      }
+
+      nav a:hover,
+      nav a.active {
+        color: var(--ocean);
+        background: rgba(31, 163, 166, .12);
+      }
+
+      .hero {
+        min-height: 86vh;
+        display: grid;
+        align-items: end;
+        padding: 70px 0 54px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr .9fr;
+        gap: 52px;
+        align-items: end;
+      }
+
+      .eyebrow {
+        margin: 0 0 18px;
+        color: var(--teal);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+
+      h1 {
+        margin-bottom: 20px;
+        color: var(--ocean);
+        font-size: clamp(58px, 11vw, 144px);
+        line-height: .92;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin-bottom: 22px;
+        color: var(--ocean);
+        font-size: clamp(30px, 4vw, 58px);
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        color: var(--ocean);
+        font-size: 18px;
+      }
+
+      .lead {
+        max-width: 720px;
+        color: #45505a;
+        font-size: 22px;
+      }
+
+      .hero-card,
+      .panel,
+      .asset-frame,
+      .sprite-card {
+        background: rgba(255,255,255,.88);
+        border: 1px solid var(--line);
+        box-shadow: 0 1px 0 rgba(255,255,255,.85);
+      }
+
+      .hero-card {
+        padding: 18px;
+        transform: translateY(0);
+        transition: transform .35s ease, box-shadow .35s ease;
+      }
+
+      .hero-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow);
+      }
+
+      .meta {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        margin-top: 36px;
+        background: var(--line);
+      }
+
+      .meta div {
+        min-height: 112px;
+        padding: 20px;
+        background: var(--white);
+      }
+
+      .meta strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--ocean);
+      }
+
+      section {
+        padding: 82px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+
+      .section-kicker {
+        margin: 0 0 12px;
+        color: var(--teal);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .panel {
+        padding: 24px;
+        transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+      }
+
+      .panel:hover {
+        transform: translateY(-4px);
+        border-color: rgba(31,163,166,.46);
+        box-shadow: var(--shadow);
+      }
+
+      .quote {
+        padding: 30px;
+        color: var(--white);
+        background: var(--ocean);
+        font-size: clamp(24px, 3vw, 34px);
+        line-height: 1.32;
+      }
+
+      .asset-frame {
+        padding: 16px;
+        overflow: hidden;
+      }
+
+      .asset-frame img {
+        transition: transform .7s ease;
+      }
+
+      .logo-rationale {
+        margin-top: 22px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .logo-principles {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .logo-principle {
+        padding: 16px;
+        background: var(--white);
+        border: 1px solid var(--line);
+      }
+
+      .logo-principle strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--ocean);
+      }
+      .asset-frame:hover img {
+        transform: scale(1.018);
+      }
+
+      .colors {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .swatch {
+        min-height: 178px;
+        display: grid;
+        align-content: end;
+        gap: 8px;
+        padding: 14px;
+        color: var(--white);
+        border: 0;
+        text-align: left;
+        cursor: pointer;
+        transition: transform .25s ease, box-shadow .25s ease;
+      }
+
+      .swatch:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow);
+      }
+
+      .swatch.light {
+        color: var(--ink);
+        border: 1px solid var(--line);
+      }
+
+      .swatch span {
+        font-family: "Inter", "Aptos Mono", Consolas, monospace;
+        font-size: 13px;
+      }
+
+      .copy-note {
+        min-height: 24px;
+        margin: 14px 0 0;
+        color: var(--teal);
+        font-size: 14px;
+      }
+
+      .type-showcase {
+        display: grid;
+        gap: 18px;
+      }
+
+      .type-card {
+        padding: 26px;
+        background: var(--white);
+        border: 1px solid var(--line);
+      }
+
+      .type-cn-display {
+        color: var(--ocean);
+        font-family: "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", Arial, sans-serif;
+        font-size: clamp(42px, 6vw, 78px);
+        font-weight: 800;
+        line-height: 1.05;
+      }
+
+      .type-latin {
+        color: var(--ocean);
+        font-family: "Inter", "Aptos", Arial, sans-serif;
+        font-size: clamp(36px, 5vw, 64px);
+        font-weight: 650;
+        letter-spacing: .16em;
+        line-height: 1.05;
+      }
+
+      .type-body {
+        max-width: 720px;
+        color: #45505a;
+        font-size: 18px;
+      }
+
+      .type-micro {
+        color: var(--muted);
+        font-family: "Inter", "Microsoft YaHei", sans-serif;
+        font-size: 13px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      .applications {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .app-card {
+        overflow: hidden;
+        background: var(--white);
+        border: 1px solid var(--line);
+      }
+
+      .app-media {
+        display: grid;
+        place-items: center;
+        aspect-ratio: 16 / 10;
+        padding: 10px;
+        background: #f4f7f8;
+        overflow: hidden;
+      }
+
+      .app-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform .7s ease;
+      }
+
+      .app-card:hover .app-media img {
+        transform: scale(1.018);
+      }
+
+      .app-card div {
+        padding: 20px;
+      }
+
+      .sprite-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .sprite-card {
+        aspect-ratio: 900 / 560;
+        min-height: 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .sprite-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("applications/haitao-application-atlas.png");
+        background-size: 200% 200%;
+        background-position: var(--pos);
+        transition: transform .7s ease, filter .7s ease;
+      }
+
+      .sprite-card:hover::before {
+        transform: scale(1.06);
+        filter: saturate(1.05);
+      }
+
+      .sprite-card span {
+        position: absolute;
+        left: 14px;
+        bottom: 14px;
+        z-index: 1;
+        padding: 6px 10px;
+        color: var(--white);
+        background: rgba(13,44,77,.82);
+        font-size: 13px;
+      }
+
+      .tokens {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--white);
+      }
+
+      .tokens th,
+      .tokens td {
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .tokens th {
+        color: var(--ocean);
+        font-size: 13px;
+      }
+
+      .copy-token {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 6px 10px;
+        color: var(--ocean);
+        background: var(--white);
+        cursor: pointer;
+        transition: background .2s ease, border-color .2s ease;
+      }
+
+      .copy-token:hover {
+        background: rgba(31,163,166,.1);
+        border-color: rgba(31,163,166,.5);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity .55s ease, transform .55s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .small {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      footer {
+        padding: 42px 0 58px;
+        color: var(--muted);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          scroll-behavior: auto !important;
+          transition: none !important;
+          animation: none !important;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .topbar-inner,
+        .hero-grid,
+        .split,
+        .grid-2,
+        .grid-3,
+        .applications,
+        .meta {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar-inner {
+          align-items: flex-start;
+          padding: 12px 0;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 46px;
+        }
+
+        section {
+          padding: 54px 0;
+        }
+
+        .colors,
+        .sprite-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 540px) {
+        .colors,
+        .sprite-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="brand-pill"><span class="mini-mark"></span><span>海涛 HAITAO</span></div>
+        <nav aria-label="章节导航">
+          <a href="#foundation">基础</a>
+          <a href="#logo">Logo</a>
+          <a href="#color">色彩</a>
+          <a href="#type">字体</a>
+          <a href="#applications">应用</a>
+          <a href="#delivery">交付</a>
+        </nav>
+      </div>
+    </div>
+
+    <main class="page">
+      <header class="hero">
+        <div class="hero-grid">
+          <div class="reveal">
+            <p class="eyebrow">HAITAO VISUAL IDENTITY MANUAL</p>
+            <h1>海涛</h1>
+            <p class="lead">一个面向通勤、办公室和轻户外场景的精品水杯品牌。视觉系统以杯口圆环和潮汐波线建立记忆点，传达纯净、力量、陪伴与耐用。</p>
+            <div class="meta">
+              <div><strong>品类</strong>保温杯、随行杯、日常水杯</div>
+              <div><strong>定位</strong>精品日常，中高端但不奢侈</div>
+              <div><strong>核心语气</strong>干净、可靠、克制、有力量</div>
+            </div>
+          </div>
+          <div class="hero-card reveal">
+            <img src="final-logo/haitao-final-logo-assets-v1.png" alt="海涛最终 Logo 图像资产">
+          </div>
+        </div>
+      </header>
+
+      <section id="foundation" class="reveal">
+        <div class="split">
+          <div>
+            <p class="section-kicker">01 Brand Foundation</p>
+            <h2>品牌基础</h2>
+          </div>
+          <div class="grid-2">
+            <div class="panel">
+              <h3>品牌故事</h3>
+              <p>海涛取意于海面潮汐的持续力量。它把每日饮水变成稳定、清爽、有秩序的小习惯，而不是一次性潮流消费。</p>
+            </div>
+            <div class="panel">
+              <h3>品牌承诺</h3>
+              <p>日常饮水，纯净有力。每一次拿起杯子，都获得干净、可靠、随身陪伴的生活感。</p>
+            </div>
+            <div class="panel">
+              <h3>目标人群</h3>
+              <p>城市通勤者、办公室人群、轻户外生活方式用户，以及注重产品质感和长期使用体验的年轻消费者。</p>
+            </div>
+            <div class="panel">
+              <h3>使用场景</h3>
+              <p>办公桌、通勤包、健身后补水、短途出行、电商购买、企业礼赠和轻户外分享。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reveal">
+        <div class="split">
+          <div>
+            <p class="section-kicker">02 Strategy</p>
+            <h2>设计策略</h2>
+          </div>
+          <div>
+            <div class="quote">杯口是品类入口，潮汐是品牌记忆。圆形让它稳定，波线让它有呼吸。</div>
+            <div class="grid-3" style="margin-top:22px">
+              <div class="panel">
+                <h3>视觉隐喻</h3>
+                <p>杯口圆环、水平潮线、海面层次、随身水杯的稳定重心。</p>
+              </div>
+              <div class="panel">
+                <h3>行业逻辑</h3>
+                <p>水杯标志必须能在杯身曲面、杯盖小标、包装和电商缩略图中快速识别。</p>
+              </div>
+              <div class="panel">
+                <h3>避免方向</h3>
+                <p>沙滩旅游、卡通浪花、廉价电商模板、水滴通用图标、过强科技渐变。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="logo" class="reveal">
+        <div class="split">
+          <div>
+            <p class="section-kicker">03 Logo Image System</p>
+            <h2>Logo 图像系统</h2>
+          </div>
+          <div>
+            <div class="asset-frame">
+              <img src="final-logo/haitao-final-logo-assets-v1.png" alt="海涛 Logo 图像系统">
+            </div>
+            <div class="logo-rationale">
+              <div class="asset-frame">
+                <img src="logo-system/haitao-logo-system-rationale-v1.png" alt="海涛 Logo 灵感来源、正负形、黑白与多色应用说明">
+              </div>
+              <div class="logo-principles">
+                <div class="logo-principle"><strong>灵感来源</strong><span>杯口圆环、潮汐波线、日常饮水仪式共同构成核心图形。</span></div>
+                <div class="logo-principle"><strong>正负形</strong><span>正形用于浅色包装与杯身；反形用于深蓝底、杯盖和社媒头像。</span></div>
+                <div class="logo-principle"><strong>黑白应用</strong><span>保留圆环与波线的强轮廓，适合单色丝印、镭雕和低成本印刷。</span></div>
+                <div class="logo-principle"><strong>多色应用</strong><span>深海蓝建立稳定感，矿物青只用于波线强调，避免过度装饰。</span></div>
+              </div>
+            </div>
+            <div class="sprite-grid" style="margin-top:22px">
+              <div class="sprite-card" style="--pos:0 0"><span>杯身 / 杯盖</span></div>
+              <div class="sprite-card" style="--pos:100% 0"><span>包装 / 吊牌</span></div>
+              <div class="sprite-card" style="--pos:0 100%"><span>电商 / 社媒</span></div>
+              <div class="sprite-card" style="--pos:100% 100%"><span>材质 / 生活方式</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="color" class="reveal">
+        <div class="split">
+          <div>
+            <p class="section-kicker">04 Color Tokens</p>
+            <h2>色彩系统</h2>
+            <p class="small">点击色块即可复制 HEX 色值。</p>
+          </div>
+          <div>
+            <div class="colors">
+              <button class="swatch" style="background:#0d2c4d" data-copy="#0D2C4D"><strong>Deep Ocean</strong><span>#0D2C4D</span></button>
+              <button class="swatch" style="background:#1fa3a6" data-copy="#1FA3A6"><strong>Mineral Teal</strong><span>#1FA3A6</span></button>
+              <button class="swatch light" style="background:#d6e6ee" data-copy="#D6E6EE"><strong>Pale Water</strong><span>#D6E6EE</span></button>
+              <button class="swatch" style="background:#2b2f33" data-copy="#2B2F33"><strong>Graphite</strong><span>#2B2F33</span></button>
+              <button class="swatch light" style="background:#bfc5cc" data-copy="#BFC5CC"><strong>Brushed Steel</strong><span>#BFC5CC</span></button>
+            </div>
+            <p class="copy-note" id="copy-note" aria-live="polite"></p>
+            <table class="tokens">
+              <tr><th>Token</th><th>Value</th><th>Use</th><th>Copy</th></tr>
+              <tr><td>color.brand.ocean</td><td>#0D2C4D</td><td>Logo、标题、深色杯身</td><td><button class="copy-token" data-copy="#0D2C4D">复制</button></td></tr>
+              <tr><td>color.brand.teal</td><td>#1FA3A6</td><td>潮线、强调、按钮</td><td><button class="copy-token" data-copy="#1FA3A6">复制</button></td></tr>
+              <tr><td>color.neutral.paper</td><td>#FBFAF6</td><td>页面与包装底色</td><td><button class="copy-token" data-copy="#FBFAF6">复制</button></td></tr>
+              <tr><td>radius.product-card</td><td>0-8px</td><td>产品卡片、说明卡片</td><td><button class="copy-token" data-copy="0-8px">复制</button></td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="type" class="reveal">
+        <div class="split">
+          <div>
+            <p class="section-kicker">05 Typography</p>
+            <h2>字体系统</h2>
+          </div>
+          <div class="type-showcase">
+            <div class="type-card">
+              <p class="type-cn-display">日常饮水，纯净有力</p>
+              <p class="small">中文标题：Noto Sans CJK SC / Source Han Sans SC / Microsoft YaHei，粗体用于包装主标题、电商主视觉和章节标题。</p>
+            </div>
+            <div class="type-card">
+              <p class="type-latin">HAITAO 750ML</p>
+              <p class="small">拉丁与数字：Inter / Aptos，适合型号、容量、保温时长和英文标识。</p>
+            </div>
+            <div class="type-card">
+              <p class="type-body">杯身采用粉末涂层与不锈钢内胆，适合通勤、办公室与短途出行。包装信息保持高对比、足够行距与明确层级。</p>
+              <p class="type-micro">PURE WATER · STRONG ENERGY · EVERY DAY · 316 STAINLESS STEEL · 750ML</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reveal">
+        <div class="split">
+          <div>
+            <p class="section-kicker">06 Imagery</p>
+            <h2>影像与图形</h2>
+          </div>
+          <div class="grid-2">
+            <div class="panel">
+              <h3>摄影</h3>
+              <p>自然光或柔和棚拍，表现粉末涂层、不锈钢、杯盖细节和真实手持尺度。背景可使用石材、浅灰桌面、海面远景虚化，但不做旅游广告感。</p>
+            </div>
+            <div class="panel">
+              <h3>图形语言</h3>
+              <p>以水平波线、圆形裁切、深浅水面分区作为辅助图形。波线用于包装腰封、吊牌底部、社媒版式和电商卡片。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="applications" class="reveal">
+        <div class="split">
+          <div>
+            <p class="section-kicker">07 Applications</p>
+            <h2>应用场景</h2>
+          </div>
+          <div class="applications">
+            <article class="app-card">
+              <div class="app-media"><img src="applications/haitao-vi-applications-v1.png" alt="海涛 VI 应用总览"></div>
+              <div><h3>系统总览</h3><p>杯身、杯盖、包装、电商与社媒头像形成统一应用框架。</p></div>
+            </article>
+            <article class="app-card">
+              <div class="app-media"><img src="applications/haitao-packaging-retail-v1.png" alt="海涛包装与零售系统"></div>
+              <div><h3>包装与零售</h3><p>包装盒、吊牌、说明卡和 SKU 标签使用同一套波线与深海蓝分区。</p></div>
+            </article>
+            <article class="app-card">
+              <div class="app-media"><img src="applications/haitao-ecommerce-social-v1.png" alt="海涛电商与社媒系统"></div>
+              <div><h3>电商与社媒</h3><p>电商主图、功能卡片、产品缩略图和社媒模板保持清晰层级。</p></div>
+            </article>
+            <article class="app-card">
+              <div class="app-media"><img src="applications/haitao-material-lifestyle-v1.png" alt="海涛材质与生活方式影像"></div>
+              <div><h3>材质与生活方式</h3><p>粉末涂层、不锈钢、硅胶密封与轻户外桌面场景支撑产品可信度。</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="reveal">
+        <div class="split">
+          <div>
+            <p class="section-kicker">08 Sprite-like Atlas</p>
+            <h2>图像复用</h2>
+          </div>
+          <div>
+            <div class="asset-frame">
+              <img src="applications/haitao-application-atlas.png" alt="海涛应用图像 atlas">
+            </div>
+            <div class="grid-2" style="margin-top:22px">
+              <div class="panel">
+                <h3>Atlas 方式</h3>
+                <p>页面将 4 张应用图合成一张 `haitao-application-atlas.png`，再通过 `background-position` 裁切成导航标、章节卡片和应用预览。</p>
+              </div>
+              <div class="panel">
+                <h3>使用原则</h3>
+                <p>大图展示完整语境，小图裁切强化节奏。裁切不作为正式物料导出，只用于网页叙事和快速浏览。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reveal">
+        <div class="split">
+          <div>
+            <p class="section-kicker">09 Voice</p>
+            <h2>语言系统</h2>
+          </div>
+          <div class="grid-2">
+            <div class="panel">
+              <h3>应该这样说</h3>
+              <p>日常饮水，纯净有力。</p>
+              <p>稳稳陪伴每一天。</p>
+              <p>从清晨通勤到傍晚散步，都保持刚好的温度。</p>
+            </div>
+            <div class="panel">
+              <h3>避免这样说</h3>
+              <p>全网爆款神器。</p>
+              <p>海边度假风，拍照超出片。</p>
+              <p>黑科技加持，重新定义喝水。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="delivery" class="reveal">
+        <div class="split">
+          <div>
+            <p class="section-kicker">10 Delivery</p>
+            <h2>资产交付</h2>
+          </div>
+          <div>
+            <table class="tokens">
+              <tr><th>文件</th><th>用途</th><th>状态</th></tr>
+              <tr><td>generated/logo-contact-sheet-v1.png</td><td>早期 Logo 图像探索</td><td>已归档</td></tr>
+              <tr><td>final-logo/haitao-final-logo-assets-v1.png</td><td>最终 Logo 图像资产板</td><td>已确认</td></tr>
+              <tr><td>applications/haitao-vi-applications-v1.png</td><td>VI 应用总览</td><td>已生成</td></tr>
+              <tr><td>applications/haitao-packaging-retail-v1.png</td><td>包装与零售应用</td><td>已生成</td></tr>
+              <tr><td>applications/haitao-ecommerce-social-v1.png</td><td>电商与社媒应用</td><td>已生成</td></tr>
+              <tr><td>applications/haitao-material-lifestyle-v1.png</td><td>材质与生活方式应用</td><td>已生成</td></tr>
+              <tr><td>applications/haitao-application-atlas.png</td><td>网页裁切复用 atlas</td><td>已生成</td></tr>
+              <tr><td>brand-manual.html</td><td>HTML 品牌识别手册</td><td>当前文件</td></tr>
+            </table>
+            <p class="small" style="margin-top:18px">本项目按 image-final 流程交付，不包含 SVG、矢量描摹或代码绘制 Logo。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page">
+      海涛 HAITAO Visual Identity Manual · Image-first and image-final workflow test
+    </footer>
+
+    <script>
+      const note = document.getElementById("copy-note");
+      document.querySelectorAll("[data-copy]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const value = button.getAttribute("data-copy");
+          try {
+            await navigator.clipboard.writeText(value);
+            if (note) note.textContent = `已复制 ${value}`;
+            button.classList.add("copied");
+            setTimeout(() => button.classList.remove("copied"), 900);
+          } catch {
+            if (note) note.textContent = `复制失败，请手动复制 ${value}`;
+          }
+        });
+      });
+
+      const sections = [...document.querySelectorAll("section[id]")];
+      const navLinks = [...document.querySelectorAll("nav a")];
+      const setActive = () => {
+        const current = sections
+          .filter((section) => section.getBoundingClientRect().top < 160)
+          .pop();
+        navLinks.forEach((link) => {
+          link.classList.toggle("active", current && link.getAttribute("href") === `#${current.id}`);
+        });
+      };
+      document.addEventListener("scroll", setActive, { passive: true });
+      setActive();
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+    </script>
+  </body>
+</html>
+

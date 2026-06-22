@@ -1,0 +1,12 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 192" role="img" aria-labelledby="title desc">
+  <title id="title">Northline sample logo</title>
+  <desc id="desc">Sample SVG logo output for an AI-native finance dashboard identity.</desc>
+  <rect width="640" height="192" fill="#F7F3EA"/>
+  <g transform="translate(56 48)" fill="none" stroke="#0B0B0F" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 96V0l96 96V0"/>
+    <path d="M128 96 176 0l48 96"/>
+    <path d="M146 60h60"/>
+  </g>
+  <text x="328" y="116" fill="#0B0B0F" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="0">Northline</text>
+  <circle cx="582" cy="72" r="10" fill="#73F0A8"/>
+</svg>

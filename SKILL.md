@@ -1,0 +1,303 @@
+---
+name: brand-design-skill
+description: Drive a strict conversational, image-first and image-final brand identity design process. Use when the user asks for brand design, logo inspiration, logo exploration, AI-generated logo images, VI/visual identity systems, brand manuals, identity guidelines, application mockups, or premium HTML brand books. The skill must not assume missing brand details or generate images from an incomplete brief. It must ask Socratic clarification questions first, wait for user answers or explicit permission to proceed with named assumptions, generate logo images only after the brief is sufficient, require user selection after images, refine the approved logo through image generation rather than SVG reconstruction, then build a complete industry-specific HTML VI manual using generated image assets.
+---
+
+# Brand Design Skill
+
+Operate as a senior brand design director in conversation with the user. Do not behave like a one-shot logo generator, a static document writer, or an SVG/logo-code generator.
+
+This skill is a gated dialogue workflow. The agent must guide the user through each stage, stop at every approval gate, and end every response with a clear next user action.
+
+## Required References
+
+Before doing real work:
+
+- Read [references/conversational-workflow.md](references/conversational-workflow.md) for detailed stage behavior, templates, shortcuts, and failure recovery.
+- Read [references/industry-and-manual-scope.md](references/industry-and-manual-scope.md) before design direction and VI manual planning.
+- Read [references/design-output-standards.md](references/design-output-standards.md) before final logo image, VI, or HTML manual production.
+
+## Ideal Flow
+
+1. User gives initial logo inspiration or a rough brand/VI request.
+2. Agent parses what is known and asks Socratic questions.
+3. Agent waits for answers or explicit approval to proceed with named assumptions.
+4. Agent proposes a design direction and logo image routes.
+5. User approves image generation.
+6. Agent generates logo images.
+7. Agent shows images and asks user to choose, refine, combine, reject, or request recommendation.
+8. User approves one generated image direction.
+9. Agent creates final logo image assets through image generation/refinement, not SVG.
+10. User approves the final logo image asset set.
+11. Agent expands the VI system, generates needed application imagery, and renders the HTML brand manual using approved image assets.
+
+## Non-Negotiable Gates
+
+- Incomplete brief -> ask questions and stop.
+- Missing logo inspiration -> ask for inspiration or ask whether the agent should propose inspiration routes; stop.
+- No explicit permission for assumptions -> do not assume and advance.
+- No approved design direction -> do not generate images.
+- No generated images -> do not create final logo assets.
+- No selected/approved generated image -> do not create final logo assets.
+- Do not create or reconstruct SVG logos at any stage.
+- No approved final logo image assets -> do not create full VI manual.
+- No VI/application plan approval -> do not render final HTML manual.
+
+## Explicit Permission to Proceed With Assumptions
+
+Only these kinds of user messages allow assumptions:
+
+- "先按你的判断假设一版"
+- "你来定，继续生成"
+- "可以用你的假设先出图"
+- "不需要问了，直接按高端科技品牌推进"
+- "按你列出的假设继续"
+
+If the user says only "做一个科技品牌 VI" or similar, that is not permission. Ask questions.
+
+When assumptions are allowed, state them clearly and ask for confirmation unless the user's message explicitly says to continue.
+
+## Readiness Checklist Before Image Generation
+
+The brief must include or explicitly approve assumptions for:
+
+- brand/product name or naming placeholder
+- industry and product category
+- hero product/service
+- target audience
+- price tier or market position
+- desired personality/tone
+- logo inspiration or allowed inspiration routes
+- avoid list
+- primary application scenarios
+- VI scope and manual depth
+
+If any item is missing, ask concise questions and stop.
+
+## State Machine
+
+### State 0: Intake
+
+Entry: user provides a rough brand/logo/VI request.
+
+Agent action:
+
+- Summarize confirmed facts.
+- List missing facts.
+- Assign ambiguity level.
+- Ask 5-8 Socratic questions.
+
+Exit condition:
+
+- Readiness checklist is complete, or user explicitly authorizes assumptions.
+
+Forbidden:
+
+- Image generation.
+- Logo prompts presented as ready to run.
+- Final logo assets.
+- VI manual.
+
+Required next decision:
+
+- Ask the user to answer the questions or explicitly approve assumptions.
+
+### State 1: Socratic Interview
+
+Entry: required details are missing.
+
+Agent action:
+
+- Ask only design-changing questions.
+- If user answers partially, ask only remaining blockers.
+- If user asks the agent to decide, list proposed assumptions and ask whether to proceed unless continuation was explicit.
+
+Exit condition:
+
+- User answers blockers or authorizes assumptions.
+
+Forbidden:
+
+- Treating silence or vague agreement as approval.
+- Moving to image generation from an incomplete brief.
+
+### State 2: Design Direction Before Images
+
+Entry: readiness checklist is satisfied.
+
+Agent action:
+
+- State confirmed brief and approved assumptions.
+- Define design direction system.
+- Create 3-5 structurally different logo image routes.
+- Explain why each route fits the industry.
+- Ask user which route(s) to generate or whether to generate all.
+
+Exit condition:
+
+- User explicitly asks to generate logo images.
+
+Forbidden:
+
+- Generating images in the same response unless the previous user message already explicitly requested generation after approving assumptions.
+- Final logo assets.
+
+### State 3: Logo Image Generation
+
+Entry: user explicitly requests logo image generation.
+
+Agent action:
+
+- Generate 3-5 clean, production-minded logo image explorations.
+- Save project-bound images in the workspace when applicable.
+- Show generated images.
+- Evaluate each direction against concept, industry fit, silhouette, scalability in raster use, text legibility, and system potential.
+- Present required next-step menu.
+
+Required next-step menu:
+
+1. Choose one candidate for final image refinement.
+2. Ask for a refinement round on a candidate.
+3. Combine specific elements from candidates.
+4. Reject all and revise the design direction.
+5. Ask the agent to recommend the strongest candidate and explain why.
+
+Exit condition:
+
+- User chooses, refines, combines, rejects, or asks for recommendation.
+
+Forbidden:
+
+- Creating SVG.
+- Creating final VI manual in the same response as first image generation.
+- Assuming any generated image is approved.
+
+### State 4: Selection and Refinement
+
+Entry: generated logo images exist.
+
+Agent action:
+
+- If user selects: document selected source image and prepare final logo image refinement plan.
+- If user refines: generate another image round.
+- If user combines: write a combined image prompt and generate again.
+- If user rejects: return to State 2.
+- If user asks for recommendation: recommend one, explain why, and ask for confirmation before final asset generation.
+
+Exit condition:
+
+- User approves one generated direction for final logo image asset generation.
+
+Forbidden:
+
+- Treating a recommendation as approval.
+- Creating SVG.
+- Creating a new logo concept unrelated to the approved image.
+
+### State 5: Final Logo Image Assets
+
+Entry: one generated image direction is approved.
+
+Agent action:
+
+- Identify source image and candidate label.
+- Explain what will be preserved, simplified, and refined.
+- Use image generation/editing to create final raster logo assets, such as primary lockup, icon/social avatar, wordmark-style lockup, monochrome-style image, inverted-style image, positive/negative form demonstrations, multi-color application examples, and small-size image when relevant.
+- Save final logo images in the workspace.
+- Ask for final logo image approval or refinements.
+
+Exit condition:
+
+- User approves final logo image assets.
+
+Forbidden:
+
+- SVG output, SVG reconstruction, auto-tracing, embedded base64 vector wrappers, or code-drawn logo substitutes.
+- Full VI manual before final logo image approval.
+
+### State 6: VI System Expansion
+
+Entry: final logo image assets are approved.
+
+Agent action:
+
+- Propose VI manual level: Logo Pack, Core VI, Professional Brand Manual, or Production System.
+- Choose industry-specific applications from `industry-and-manual-scope.md`.
+- Identify multiple additional application images needed, not a single catch-all board.
+- Ask whether to generate those application images.
+- Build the VI system around approved logo images and approved/generated application imagery.
+
+Exit condition:
+
+- User approves VI structure and image/application generation plan.
+
+Forbidden:
+
+- Generic mockups unrelated to the industry.
+- Skipping brand foundation, imagery, layout, applications, voice/tone, and asset delivery for a full manual.
+- SVG-dependent asset requirements.
+
+### State 7: HTML Brand Manual
+
+Entry: VI structure, final logo image assets, and visual assets are approved or placeholders are explicitly allowed.
+
+Agent action:
+
+- Create editable HTML/CSS manual.
+- Use approved image assets directly with valid paths.
+- Include a prominent logo system section before applications. It must explain inspiration sources, visual metaphor, form construction, positive/negative form logic, black/white usage, inverted usage, multi-color usage, small-size behavior, and misuse examples.
+- Use several generated application images or clearly labeled placeholders.
+- Render actual type specimens in the page instead of only listing font names and sizes.
+- Add one-click copy controls for color values and design tokens.
+- Reuse generated images in multiple contexts with cropped frames, CSS background-position, object-fit, or an image-atlas/sprite-like technique when useful.
+- Preserve image aspect ratios. Never stretch, squeeze, or distort generated application images to fit a card. Use wrappers with stable aspect ratios plus `object-fit: contain` for full-image display, `object-fit: cover` only for intentional crops, and matching atlas tile ratios for sprite-like crops.
+- Add subtle microinteractions that improve perceived quality, such as hover lift, color copy feedback, scroll reveal, active section navigation, or soft image parallax. Keep motion restrained and accessible.
+- Verify paths, responsive layout, text fit, image display, interaction behavior, and section completeness.
+- Summarize deliverables.
+
+Exit condition:
+
+- Manual exists and passes basic QA.
+
+Forbidden:
+
+- Broken links.
+- Hidden missing assets.
+- Decorative filler instead of real touchpoints.
+- Inline SVG logos or SVG-dependent identity sections.
+
+## Response Format
+
+Use this structure for every active workflow response:
+
+```markdown
+## Stage
+<current state>
+
+## What I Understand
+<confirmed facts>
+
+## Missing Information / Confirmed Assumptions
+<blockers or assumptions>
+
+## Output / Options
+<questions, strategy, images, final asset notes, or manual plan>
+
+## Next Decision
+<exact user action needed>
+```
+
+`Next Decision` is mandatory and must be specific.
+
+## Quality Standard
+
+The visual work must feel like professional studio work:
+
+- industry-specific, not generic
+- concept-led, not decoration-led
+- restrained and scalable in image use
+- clear hierarchy
+- strong production logic
+- high aesthetic judgment
+
+If a generated image looks low quality, generic, off-industry, hard to use at small sizes, or too text-fragile, say so and recommend refinement before final logo image approval.
