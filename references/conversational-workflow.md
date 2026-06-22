@@ -17,6 +17,35 @@ If the exit condition is not met, ask for the missing input and stop.
 
 Do not create SVG logos or SVG logo reconstructions. This skill uses image generation for logo exploration, final logo assets, VI applications, and manual visuals.
 
+## No Simulated Consent
+
+Testing the skill is not permission to simulate a whole customer journey. Treat "test this skill", "make a complete VI", "you decide", "generate everything", and "do it all" as real user requests that still require gates.
+
+The agent must never invent user approvals for:
+
+- assumption approval
+- route approval for image generation
+- candidate selection
+- final logo image asset approval
+- VI/application image plan approval
+- final HTML manual approval
+
+If the user wants the agent to decide, propose named assumptions or a recommendation, then ask for confirmation. Do not treat the agent's own recommendation as the user's approval.
+
+## New Request Rule
+
+For every new brand/logo/VI request, the first response must be Intake or Socratic Interview unless the user has already supplied a complete brief and explicit approval for the current stage.
+
+The first response must not:
+
+- generate images
+- create files
+- create an HTML manual
+- present runnable image prompts as if image generation is already approved
+- claim a logo candidate is selected
+
+The first response must end with a specific user action, usually answering questions or approving named assumptions.
+
 ## Stage 0: Intake
 
 Entry condition: user gives a brand, logo, or VI request.
@@ -60,6 +89,8 @@ Intake -> Socratic Interview
 Please answer these questions. I will not generate logo images until the brief is complete or you explicitly ask me to proceed with assumptions.
 ```
 
+If the user asks for complete delivery immediately, add one sentence: "I can deliver the full VI manual after the approval gates, but I need the design brief decision first."
+
 ## Stage 1: Socratic Interview
 
 Entry condition: blocking details are missing.
@@ -69,7 +100,7 @@ Question quality rules:
 - Ask only questions that change the design outcome.
 - Prefer grouped questions: product, audience, taste, logo inspiration, applications, constraints.
 - If the user answers partially, ask only the remaining blockers.
-- If the user says "you decide", restate assumptions and ask whether to proceed unless the user explicitly said to continue.
+- If the user says "you decide", restate assumptions and ask whether to proceed.
 
 Exit condition:
 
@@ -81,6 +112,7 @@ Forbidden:
 - Do not treat silence as approval.
 - Do not use broad words like "premium" without asking what kind of premium.
 - Do not proceed from an incomplete brief to image generation.
+- Do not interpret "full VI", "test", or "complete delivery" as consent to bypass the interview.
 
 ## Stage 2: Design Direction Before Images
 
@@ -100,8 +132,10 @@ Exit condition:
 
 Forbidden:
 
-- Do not generate images in the same response unless the previous user message already said to proceed.
+- Do not generate images in the same response.
 - Do not create final logo assets.
+
+Hard stop: even if the user asked the agent to decide, the agent must first present route options and ask for image-generation approval.
 
 Response template:
 
@@ -146,6 +180,7 @@ Forbidden:
 - Do not create final VI manual in the same response as first image generation.
 - Do not assume the prettiest image is approved.
 - Do not proceed without a user decision.
+- Do not create final logo assets in the same response as first image generation.
 
 Required next-decision menu:
 
@@ -220,8 +255,9 @@ Agent action:
 1. Propose manual contents based on industry.
 2. Identify needed application visuals.
 3. Ask whether to generate application images.
-4. Generate imagery only after confirmation when needed.
-5. Build the VI system text and assets around approved images.
+4. Stop for approval.
+5. Generate imagery only after confirmation when needed.
+6. Build the VI system text and assets around approved images.
 
 Exit condition:
 
@@ -232,6 +268,7 @@ Forbidden:
 - Do not use generic applications.
 - Do not skip brand foundation, imagery, layout, applications, and asset delivery.
 - Do not introduce SVG requirements.
+- Do not render the HTML manual in the same response that first proposes the VI structure.
 
 ## Stage 7: HTML Brand Manual
 
@@ -261,18 +298,24 @@ Forbidden:
 If user says "直接做":
 
 - If no details: ask whether assumptions are allowed.
-- If assumptions are allowed: list assumptions first, then ask "Generate images with these assumptions?"
-- If user says yes: generate images.
+- If assumptions are allowed: list assumptions first, then ask for assumption confirmation.
+- If user confirms assumptions: propose logo image routes and ask which to generate.
 
 If user says "你来决定":
 
 - Recommend assumptions.
-- Ask for confirmation unless the message explicitly says to continue.
+- Ask for confirmation.
 
 If user asks for "完整交付" immediately:
 
 - Explain the gated flow briefly.
 - Start with missing questions.
+
+If user says "测试这个 skill":
+
+- Do not compress the process.
+- Respond exactly as the skill should behave for a real brand client.
+- Stop at the first unmet gate.
 
 ## Failure Recovery
 

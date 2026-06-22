@@ -24,10 +24,13 @@ The final logo must be a refined image asset derived from an approved generated 
 
 Before moving stages, verify:
 
+- A new brand/logo/VI request received a Socratic intake response first, unless the brief was complete and the current stage had explicit approval.
+- "Test this skill", "complete VI", "you decide", or "generate everything" was not treated as consent to bypass gates.
 - Intake has enough detail or the user explicitly authorized assumptions.
 - Missing brand details triggered Socratic questions instead of image generation.
 - The user answered blocking questions or explicitly approved named assumptions before design direction.
 - Image generation did not happen in the same response as unanswered intake questions.
+- Design routes were presented and approved before image generation.
 - Image-generation prompts are industry-specific and structurally varied.
 - After image generation, the response gives explicit next-step options: choose, refine, combine, reject, or ask for recommendation.
 - Actual generated logo images exist before final logo asset creation.
@@ -106,11 +109,16 @@ Use this checklist before sending a response or producing an artifact.
 
 Treat the output as a regression if any of these happen:
 
+- The first response to a new brand/logo/VI request creates files, images, final assets, or a manual before Socratic intake.
+- The agent treats "test this skill", "complete VI", "you decide", or "generate everything" as permission to skip confirmations.
 - The agent generates images before asking required questions.
+- The agent generates images in the same response that first proposes design routes.
 - The agent creates final logo images before initial image exploration and user selection.
 - The agent creates SVG logo files or SVG reconstructions.
 - The agent skips user selection after showing images.
+- The agent treats its own recommendation as user approval.
 - The agent creates a full VI manual before final logo image approval.
+- The agent renders the final HTML manual in the same response that first proposes the VI/application plan.
 - The final manual contains generic applications unrelated to the industry.
 
 When a regression happens, mark the artifact as exploratory or regression, return to the correct stage, and ask for the missing user decision.

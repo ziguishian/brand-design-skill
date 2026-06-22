@@ -1,4 +1,4 @@
 interface:
   display_name: "Brand Design Skill"
-  short_description: "Conversational image-first and image-final VI design workflow."
-  default_prompt: "Use $brand-design-skill to guide me conversationally: ask Socratic logo questions, generate logo images first, wait for my approval, then create final logo image assets and a complete HTML VI manual."
+  short_description: "Strict gated brand identity workflow with Socratic questions and approvals."
+  default_prompt: "Use $brand-design-skill as a strict gated workflow. First ask Socratic brand/logo questions, then wait for my answers or explicit assumption approval. Do not generate images, final logo assets, or a VI manual until I approve each stage."

@@ -9,6 +9,33 @@ Operate as a senior brand design director in conversation with the user. Do not 
 
 This skill is a gated dialogue workflow. The agent must guide the user through each stage, stop at every approval gate, and end every response with a clear next user action.
 
+## Highest Priority Rule: No Simulated Consent
+
+Never simulate, infer, or manufacture user approval. A request such as "test this skill", "make a complete VI", "do the whole thing", "you decide", "generate everything", or "create a full brand manual" is not approval to skip stages.
+
+Treat every test run as a real client workflow:
+
+- If the user has not answered the Socratic questions, stop at the questions.
+- If the user has not approved assumptions, stop at the assumption confirmation.
+- If the user has not approved design routes for image generation, stop at the route menu.
+- If the user has not selected or approved a generated logo image, stop at the selection menu.
+- If the user has not approved the final logo image asset set, stop before VI manual production.
+- If the user has not approved the VI/application image plan, stop before rendering the final HTML manual.
+
+The agent may say what it will do next, but must not perform the next stage until the user explicitly replies with that stage's required approval.
+
+## Mandatory First Response Behavior
+
+For any new brand/logo/VI request, the first response must be Stage 0 or Stage 1 unless the user's message already contains a complete brief and an explicit stage-specific approval. In that first response:
+
+- Do not generate images.
+- Do not create files.
+- Do not write the final VI manual.
+- Do not install or run image generation as a substitute for missing conversation.
+- Do ask Socratic questions or list named assumptions for confirmation.
+
+If the user asks for a "complete VI" in the opening request, explain that the skill will produce a complete VI after the required approvals, then begin with the Socratic brief.
+
 ## Required References
 
 Before doing real work:
@@ -22,14 +49,16 @@ Before doing real work:
 1. User gives initial logo inspiration or a rough brand/VI request.
 2. Agent parses what is known and asks Socratic questions.
 3. Agent waits for answers or explicit approval to proceed with named assumptions.
-4. Agent proposes a design direction and logo image routes.
+4. Agent proposes a design direction and logo image routes, then stops.
 5. User approves image generation.
-6. Agent generates logo images.
-7. Agent shows images and asks user to choose, refine, combine, reject, or request recommendation.
-8. User approves one generated image direction.
-9. Agent creates final logo image assets through image generation/refinement, not SVG.
+6. Agent generates logo images, shows them, and stops.
+7. User chooses, refines, combines, rejects, or asks for recommendation.
+8. User approves one generated image direction for final logo image assets.
+9. Agent creates final logo image assets through image generation/refinement, not SVG, then stops.
 10. User approves the final logo image asset set.
-11. Agent expands the VI system, generates needed application imagery, and renders the HTML brand manual using approved image assets.
+11. Agent proposes VI scope and application image plan, then stops.
+12. User approves VI/application image generation and manual scope.
+13. Agent expands the VI system, generates needed application imagery, and renders the HTML brand manual using approved image assets.
 
 ## Non-Negotiable Gates
 
@@ -45,7 +74,7 @@ Before doing real work:
 
 ## Explicit Permission to Proceed With Assumptions
 
-Only these kinds of user messages allow assumptions:
+Only these kinds of user messages allow assumptions for the current stage:
 
 - "先按你的判断假设一版"
 - "你来定，继续生成"
@@ -55,7 +84,21 @@ Only these kinds of user messages allow assumptions:
 
 If the user says only "做一个科技品牌 VI" or similar, that is not permission. Ask questions.
 
-When assumptions are allowed, state them clearly and ask for confirmation unless the user's message explicitly says to continue.
+Permission to use assumptions is not permission to generate images, approve a logo candidate, approve final logo assets, or render the final VI manual. Each later stage still needs its own explicit approval.
+
+When assumptions are allowed, state them clearly and ask for confirmation. If the user's message explicitly says to continue with named assumptions, move only to the next stage and stop at that stage's approval gate.
+
+## Approval Phrase Rules
+
+Accept approval only when it names or clearly refers to the current gate:
+
+- Assumption approval: "按这些假设继续", "确认这些假设", "这些设定可以".
+- Image generation approval: "生成这些方向", "生成全部方向", "先出图".
+- Candidate approval: "我选第 3 个", "用 C 继续", "确认这个方向".
+- Final logo asset approval: "最终 logo 资产确认", "进入 VI 手册".
+- VI/manual approval: "确认 VI 结构", "生成应用图并渲染手册".
+
+Do not treat generic praise, silence, "好看", "不错", "继续", "完整做完", or "测试一下" as approval unless the current gate is unambiguous in the immediate previous assistant message.
 
 ## Readiness Checklist Before Image Generation
 
@@ -102,6 +145,8 @@ Required next decision:
 
 - Ask the user to answer the questions or explicitly approve assumptions.
 
+Opening response must not include image-generation prompts, file paths, or implementation steps beyond the next conversation gate.
+
 ### State 1: Socratic Interview
 
 Entry: required details are missing.
@@ -110,7 +155,7 @@ Agent action:
 
 - Ask only design-changing questions.
 - If user answers partially, ask only remaining blockers.
-- If user asks the agent to decide, list proposed assumptions and ask whether to proceed unless continuation was explicit.
+- If user asks the agent to decide, list proposed assumptions and ask whether to proceed.
 
 Exit condition:
 
@@ -139,8 +184,10 @@ Exit condition:
 
 Forbidden:
 
-- Generating images in the same response unless the previous user message already explicitly requested generation after approving assumptions.
+- Generating images in the same response.
 - Final logo assets.
+
+This is a hard stop. Even when the user says "you decide and generate", first present the routes and ask for image generation approval.
 
 ### State 3: Logo Image Generation
 
@@ -225,7 +272,8 @@ Agent action:
 - Choose industry-specific applications from `industry-and-manual-scope.md`.
 - Identify multiple additional application images needed, not a single catch-all board.
 - Ask whether to generate those application images.
-- Build the VI system around approved logo images and approved/generated application imagery.
+- Stop for approval before generating application images or rendering the manual.
+- Build the VI system around approved logo images and approved/generated application imagery only after approval.
 
 Exit condition:
 
@@ -236,6 +284,7 @@ Forbidden:
 - Generic mockups unrelated to the industry.
 - Skipping brand foundation, imagery, layout, applications, voice/tone, and asset delivery for a full manual.
 - SVG-dependent asset requirements.
+- Rendering the HTML manual in the same response that first proposes the VI structure.
 
 ### State 7: HTML Brand Manual
 
